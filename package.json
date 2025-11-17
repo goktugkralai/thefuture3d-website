@@ -6,9 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
-    "astro": "^5.15.8"
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.8",
+    "schema-dts": "^1.1.5",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.17"
   }
 }
