@@ -1,0 +1,12 @@
+# Robots.txt for TheFuture3D
+User-agent: *
+Allow: /
+Crawl-delay: 0
+
+# Sitemap location
+Sitemap: https://thefuture3d-website.vercel.app/sitemap-index.xml
+
+# Block admin areas (when added)
+Disallow: /admin
+Disallow: /api/
+Disallow: /.env
