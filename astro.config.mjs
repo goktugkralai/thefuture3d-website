@@ -2,8 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
-
+import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import vercel from '@astrojs/vercel';
@@ -12,11 +11,14 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://staging.thefuture3d.com',
   output: 'static',
-  integrations: [react(), sitemap(), mdx()],
-
-  vite: {
-    plugins: [tailwindcss()]
-  },
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    sitemap(),
+    mdx()
+  ],
 
   adapter: vercel()
 });
