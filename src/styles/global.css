@@ -3,7 +3,7 @@
 
 @import "tailwindcss";
 
-@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+@source "../../src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
 
 /* Base Styles */
 :root {
@@ -93,16 +93,7 @@ main {
   position: relative;
 }
 
-/* Grid improvements */
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-/* Flex improvements */
-.flex {
-  display: flex;
-}
+/* Don't override Tailwind utilities - let Tailwind handle .grid and .flex */
 
 /* Ensure images don't overflow */
 img {
