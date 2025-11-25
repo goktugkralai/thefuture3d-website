@@ -10,7 +10,8 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://staging.thefuture3d.com', // Updated for staging deployment
+  site: 'https://staging.thefuture3d.com',
+  output: 'static',
   integrations: [react(), sitemap(), mdx()],
 
   vite: {

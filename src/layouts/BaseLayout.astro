@@ -54,11 +54,9 @@ const siteTitle = title ? `${title} | THE FUTURE 3D` : 'THE FUTURE 3D - Professi
       "foundingDate": "2019"
     })} />
   </head>
-  <body class="min-h-screen bg-white">
+  <body class="min-h-screen bg-white antialiased">
     <Header />
-    <main>
-      <slot />
-    </main>
+    <slot />
     <Footer />
   </body>
 </html>
