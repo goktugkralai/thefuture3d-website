@@ -3,7 +3,7 @@
 
 @import "tailwindcss";
 
-@source "../../src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
 
 /* Base Styles */
 :root {
