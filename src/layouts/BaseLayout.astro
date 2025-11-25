@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -52,8 +54,12 @@ const siteTitle = title ? `${title} | THE FUTURE 3D` : 'THE FUTURE 3D - Professi
       "foundingDate": "2019"
     })} />
   </head>
-  <body>
-    <slot />
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 
