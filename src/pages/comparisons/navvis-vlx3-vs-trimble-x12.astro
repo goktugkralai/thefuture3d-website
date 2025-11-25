@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="NavVis VLX3 vs Trimble X12: Mobile vs Static Scanning"
+  description="Compare NavVis VLX3 mobile SLAM scanner vs Trimble X12 static laser scanner. VLX3 for speed (2 hours vs 8 hours), X12 for precision (±1mm vs ±5mm)."
+  keywords="navvis vlx3 vs trimble x12, mobile scanning vs static, slam vs laser scanner"
+>
+  <main class="min-h-screen">
+    <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-6">NavVis VLX3 vs Trimble X12</h1>
+        <p class="text-xl max-w-3xl">Mobile SLAM vs Static Laser Scanning - When to use each</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <table class="w-full bg-white border border-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-4 text-left">Factor</th>
+              <th class="px-6 py-4 text-center">NavVis VLX3 (Mobile)</th>
+              <th class="px-6 py-4 text-center">Trimble X12 (Static)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-6 py-4 font-semibold">Accuracy</td>
+              <td class="px-6 py-4 text-center">5mm @ 10m</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>±1mm @ 25m</strong></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Speed</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>2 hours vs 8 hours traditional</strong></td>
+              <td class="px-6 py-4 text-center">Scan per position</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Mobility</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>Wearable, continuous scanning</strong></td>
+              <td class="px-6 py-4 text-center">Tripod-mounted, stationary</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Best For</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>Large spaces, fast turnaround</strong></td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>Survey-grade precision</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900">We Use Both</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+            <h3 class="font-bold text-xl mb-4">NavVis VLX3 For:</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>✓ Large facilities (stadiums, malls, factories)</li>
+              <li>✓ Multi-floor buildings</li>
+              <li>✓ Fast-turnaround projects</li>
+              <li>✓ Continuous path scanning</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+            <h3 class="font-bold text-xl mb-4">Trimble X12 For:</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>✓ Survey-grade accuracy requirements</li>
+              <li>✓ Professional BIM (LOD 400-500)</li>
+              <li>✓ Outdoor sites and long-range scans</li>
+              <li>✓ Maximum precision needed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900">We Choose the Right Scanner for Your Project</h2>
+        <a href="/contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold">Get Free Consultation</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

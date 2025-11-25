@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Drone LiDAR vs Terrestrial Laser Scanning: When to Use Each"
+  description="Compare aerial drone LiDAR (Zenmuse L3) vs terrestrial laser scanning (Trimble X12). Drone LiDAR for large sites (100 km²/day), terrestrial for precision (±1mm)."
+  keywords="drone lidar vs terrestrial, aerial lidar vs ground scanning, when to use drone lidar"
+>
+  <main class="min-h-screen">
+    <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-6">Drone LiDAR vs Terrestrial Scanning</h1>
+        <p class="text-xl max-w-3xl">Complete guide to aerial vs ground-based 3D scanning</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <table class="w-full bg-white border border-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-4 text-left">Factor</th>
+              <th class="px-6 py-4 text-center">Drone LiDAR (Zenmuse L3)</th>
+              <th class="px-6 py-4 text-center">Terrestrial (Trimble X12)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-6 py-4 font-semibold">Coverage Speed</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>100 km²/day</strong></td>
+              <td class="px-6 py-4 text-center">1-5 km²/day</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Accuracy</td>
+              <td class="px-6 py-4 text-center">3-5cm @ typical altitude</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>±1mm @ 25m</strong></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Detection Range</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>950 meters</strong></td>
+              <td class="px-6 py-4 text-center">365 meters</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold">Best For</td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>Large sites, topography</strong></td>
+              <td class="px-6 py-4 text-center bg-green-50"><strong>Buildings, precision BIM</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900">We Use Both - You Get the Right Tool</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+            <h3 class="font-bold text-xl mb-4">Drone LiDAR For:</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>✓ Construction sites (large area)</li>
+              <li>✓ Topographic mapping</li>
+              <li>✓ Infrastructure corridors</li>
+              <li>✓ Agricultural fields</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+            <h3 class="font-bold text-xl mb-4">Terrestrial Scanning For:</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>✓ Building interiors</li>
+              <li>✓ Survey-grade BIM models</li>
+              <li>✓ Precision measurements</li>
+              <li>✓ Architectural documentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900">Get Expert Guidance on Which Method</h2>
+        <a href="/contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold">Free Consultation</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

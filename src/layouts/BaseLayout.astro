@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+}
+
+const { title, description, keywords } = Astro.props;
+const siteTitle = title ? `${title} | THE FUTURE 3D` : 'THE FUTURE 3D - Professional 3D Scanning & Drone Services';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:site_name" content="THE FUTURE 3D" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={Astro.url} />
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "THE FUTURE 3D",
+      "url": "https://www.thefuture3d.com",
+      "description": "Professional 3D laser scanning, Matterport virtual tours, and commercial drone services for real estate, architecture, construction, and engineering.",
+      "telephone": "+1-347-998-1464",
+      "email": "info@thefuture3d.com",
+      "areaServed": ["Miami, FL", "New York, NY", "Los Angeles, CA", "United States"],
+      "foundingDate": "2019"
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+

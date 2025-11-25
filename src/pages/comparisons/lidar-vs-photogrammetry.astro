@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="LiDAR vs Photogrammetry: Complete Comparison Guide"
+  description="Detailed comparison of LiDAR and photogrammetry for drone mapping. Learn when to use each method, accuracy differences, costs, and ideal applications."
+  keywords="lidar vs photogrammetry, drone lidar, photogrammetry mapping, which is better"
+>
+  <main class="min-h-screen">
+    <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-6">LiDAR vs Photogrammetry</h1>
+        <p class="text-xl max-w-3xl">Complete guide to choosing the right mapping method for your project</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white border border-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left">Factor</th>
+                <th class="px-6 py-4 text-center">LiDAR</th>
+                <th class="px-6 py-4 text-center">Photogrammetry</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="px-6 py-4 font-semibold">Accuracy</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>3-5cm (survey-grade)</strong></td>
+                <td class="px-6 py-4 text-center">1-5cm (with RTK)</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Vegetation Penetration</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>Yes (up to 16 returns)</strong></td>
+                <td class="px-6 py-4 text-center">No</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Color Data</td>
+                <td class="px-6 py-4 text-center">RGB fusion (100MP)</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>Full photorealistic</strong></td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Coverage Speed</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>100 km²/day</strong></td>
+                <td class="px-6 py-4 text-center">50-80 km²/day</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Best For</td>
+                <td class="px-6 py-4 text-center">Topography, vegetation, large sites</td>
+                <td class="px-6 py-4 text-center">Visual detail, orthomosaics, buildings</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900">When to Use Each Method</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+            <h3 class="font-bold text-2xl mb-4 text-gray-900">Choose LiDAR For:</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li>✓ Sites with dense vegetation</li>
+              <li>✓ Topographic surveys</li>
+              <li>✓ Large area mapping (100+ km²)</li>
+              <li>✓ Multi-layer data capture</li>
+              <li>✓ Utility corridor mapping</li>
+              <li>✓ Forestry applications</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border-2 border-gray-200 rounded-lg p-8">
+            <h3 class="font-bold text-2xl mb-4 text-gray-900">Choose Photogrammetry For:</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li>✓ Building facades and structures</li>
+              <li>✓ Orthomosaic imagery needed</li>
+              <li>✓ Visual inspection and monitoring</li>
+              <li>✓ Construction progress photos</li>
+              <li>✓ Marketing materials</li>
+              <li>✓ Budget-conscious projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900">We Offer Both LiDAR & Photogrammetry</h2>
+        <p class="text-xl text-gray-600 mb-8">DJI Zenmuse L3 LiDAR and Zenmuse P1 photogrammetry - or combine both</p>
+        <a href="/drone" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold">View Drone Services</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

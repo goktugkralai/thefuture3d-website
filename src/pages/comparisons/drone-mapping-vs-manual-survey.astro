@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Drone Mapping vs Manual Survey: Cost & Time Comparison"
+  description="Compare drone photogrammetry vs traditional manual surveying. Drones are 5-10x faster, more accurate with RTK, and cost 40-60% less. ROI analysis included."
+  keywords="drone mapping vs manual survey, drone surveying benefits, traditional surveying comparison"
+>
+  <main class="min-h-screen">
+    <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-6">Drone Mapping vs Manual Survey</h1>
+        <p class="text-xl max-w-3xl">ROI analysis: Why construction and engineering firms are switching to drones</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white border border-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left">Factor</th>
+                <th class="px-6 py-4 text-center bg-blue-50">Drone Mapping</th>
+                <th class="px-6 py-4 text-center">Manual Survey</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="px-6 py-4 font-semibold">Time for 50 Acres</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>2-4 hours</strong></td>
+                <td class="px-6 py-4 text-center">2-3 days</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Accuracy (with RTK)</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>1-5cm</strong></td>
+                <td class="px-6 py-4 text-center">2-5cm</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Typical Cost</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>$1,500-$3,500</strong></td>
+                <td class="px-6 py-4 text-center">$3,000-$8,000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Data Density</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>Millions of points</strong></td>
+                <td class="px-6 py-4 text-center">Spot measurements</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-semibold">Safety</td>
+                <td class="px-6 py-4 text-center bg-green-50"><strong>No site access risks</strong></td>
+                <td class="px-6 py-4 text-center">Workers on-site</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900">ROI Calculation</h2>
+        <div class="bg-white border-2 border-blue-600 rounded-lg p-8">
+          <div class="grid md:grid-cols-2 gap-8 mb-6">
+            <div>
+              <h3 class="font-bold text-xl mb-4">Manual Survey</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li>Survey crew: 2-3 people × 2-3 days</li>
+                <li>Labor cost: $3,000-$6,000</li>
+                <li>Equipment rental: $500-$1,000</li>
+                <li>Processing time: 1-2 weeks</li>
+                <li><strong class="text-red-600">Total: $3,500-$8,000</strong></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-xl mb-4">Drone Mapping</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li>Flight time: 2-4 hours</li>
+                <li>Drone service: $1,500-$3,500</li>
+                <li>Processing: 24-48 hours</li>
+                <li>Deliverables: Same day to 2 days</li>
+                <li><strong class="text-green-600">Total: $1,500-$3,500</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 p-6 rounded text-center">
+            <p class="text-2xl font-bold text-green-700">Typical Savings: $2,000-$4,500 + 2-3 weeks faster</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900">Save Time & Money with Drone Surveys</h2>
+        <a href="/drone" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold">View Drone Mapping Services</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
