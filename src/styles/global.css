@@ -5,8 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base Styles */
+/* Miami Tech Theme - Custom CSS Variables */
 :root {
+  /* Primary Colors */
+  --primary-blue: #0066CC;
+  --primary-purple: #7C3AED;
+  --primary-teal: #0891B2;
+  
+  /* Gradients */
+  --gradient-miami: linear-gradient(135deg, #0066CC 0%, #7C3AED 100%);
+  --gradient-ocean: linear-gradient(135deg, #0891B2 0%, #0066CC 100%);
+  --gradient-sky: linear-gradient(180deg, #60A5FA 0%, #0066CC 100%);
+  
+  /* Glassmorphism */
+  --glass-white: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
   /* Polished Black Color Scheme */
   --color-black: #000000;
   --color-gray-950: #0a0a0a;
@@ -24,6 +38,37 @@
   /* Accent colors for CTAs */
   --color-accent: #ffffff;
   --color-accent-hover: #f3f4f6;
+  
+  /* Text Colors */
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-light: #F9FAFB;
+}
+
+/* Global glass effect utility */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--gradient-miami);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 * {

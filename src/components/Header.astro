@@ -2,29 +2,29 @@
 // Header Component with Navigation
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 border-b border-gray-200/20 shadow-lg">
   <nav class="container mx-auto px-4 lg:px-6">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2 group">
-        <div class="text-2xl lg:text-3xl font-bold text-gray-900">
+      <a href="/" class="flex items-center space-x-3 group">
+        <div class="text-2xl lg:text-3xl font-bold gradient-text">
           THE FUTURE 3D
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center space-x-1">
-        <a href="/" class="nav-link">Home</a>
+      <div class="hidden lg:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Home</a>
         
         <!-- Services Dropdown -->
         <div class="relative group">
-          <button class="nav-link flex items-center">
+          <button class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center">
             Services
             <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <div class="py-2">
               <a href="/drone" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Drone Services</a>
               <a href="/3d-scan-to-bim" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">3D Scanning</a>
@@ -37,13 +37,13 @@
 
         <!-- Industries Dropdown -->
         <div class="relative group">
-          <button class="nav-link flex items-center">
+          <button class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center">
             Industries
             <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <div class="py-2">
               <a href="/industries/real-estate" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Real Estate</a>
               <a href="/industries/architecture" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Architecture</a>
@@ -54,14 +54,14 @@
           </div>
         </div>
 
-        <a href="/locations" class="nav-link">Locations</a>
-        <a href="/technology" class="nav-link">Technology</a>
-        <a href="/contact" class="nav-link">Contact</a>
+        <a href="/locations" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Locations</a>
+        <a href="/technology" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Technology</a>
+        <a href="/contact" class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">Contact</a>
       </div>
 
       <!-- CTA Button (Desktop) -->
       <div class="hidden lg:flex items-center space-x-4">
-        <a href="/contact" class="bg-black hover:bg-gray-900 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200">
+        <a href="/contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
           Get Quote
         </a>
       </div>
@@ -137,33 +137,7 @@
 </header>
 
 <style>
-  .nav-link {
-    padding: 0.5rem 1rem;
-    color: rgb(55 65 81);
-    font-weight: 500;
-    transition: color 200ms;
-    position: relative;
-  }
-  
-  .nav-link:hover {
-    color: black;
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0.125rem;
-    background: black;
-    transition: width 200ms;
-    transform: translateX(-50%);
-  }
-  
-  .nav-link:hover::after {
-    width: 75%;
-  }
+  /* Styles now handled by Tailwind classes */
 </style>
 
 <script>
