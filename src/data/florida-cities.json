@@ -1,0 +1,15 @@
+{
+  "cities": [
+    {"name": "Miami", "slug": "miami", "county": "Miami-Dade"},
+    {"name": "Fort Lauderdale", "slug": "fort-lauderdale", "county": "Broward"},
+    {"name": "West Palm Beach", "slug": "west-palm-beach", "county": "Palm Beach"},
+    {"name": "Orlando", "slug": "orlando", "county": "Orange"},
+    {"name": "Tampa", "slug": "tampa", "county": "Hillsborough"},
+    {"name": "Jacksonville", "slug": "jacksonville", "county": "Duval"},
+    {"name": "Boca Raton", "slug": "boca-raton", "county": "Palm Beach"},
+    {"name": "Coral Gables", "slug": "coral-gables", "county": "Miami-Dade"},
+    {"name": "Aventura", "slug": "aventura", "county": "Miami-Dade"},
+    {"name": "Hollywood", "slug": "hollywood", "county": "Broward"}
+  ]
+}
+
