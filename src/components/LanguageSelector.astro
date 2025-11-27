@@ -1,0 +1,82 @@
+---
+// Language Selector Component (UI only - ready for i18n integration)
+const languages = [
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+];
+
+const currentLang = 'en';
+---
+
+<div class="relative group">
+  <button
+    class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-300 text-sm font-medium text-gray-700 dark:text-gray-300"
+    aria-label="Select language"
+    aria-expanded="false"
+    aria-haspopup="true"
+    id="language-selector-button"
+  >
+    <span class="text-lg">{languages.find(l => l.code === currentLang)?.flag || '🌐'}</span>
+    <span class="hidden sm:inline">{languages.find(l => l.code === currentLang)?.name || 'English'}</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Language Dropdown -->
+  <div
+    id="language-dropdown"
+    class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+    role="menu"
+    aria-labelledby="language-selector-button"
+  >
+    <div class="py-2">
+      {languages.map((lang) => (
+        <a
+          href={`?lang=${lang.code}`}
+          class={`flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+            lang.code === currentLang
+              ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-semibold'
+              : 'text-gray-700 dark:text-gray-300'
+          }`}
+          role="menuitem"
+        >
+          <span class="text-xl">{lang.flag}</span>
+          <span>{lang.name}</span>
+          {lang.code === currentLang && (
+            <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('language-selector-button');
+    const dropdown = document.getElementById('language-dropdown');
+    
+    // Toggle dropdown on click (mobile)
+    button?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !isExpanded);
+      dropdown?.classList.toggle('opacity-0');
+      dropdown?.classList.toggle('invisible');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!button?.contains(e.target as Node) && !dropdown?.contains(e.target as Node)) {
+        button?.setAttribute('aria-expanded', 'false');
+        dropdown?.classList.add('opacity-0', 'invisible');
+      }
+    });
+  });
+</script>
+
