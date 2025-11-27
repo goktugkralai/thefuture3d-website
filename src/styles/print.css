@@ -1,0 +1,183 @@
+/* Print Styles for TheFuture3D Website */
+
+@media print {
+  /* Hide non-essential elements */
+  header,
+  footer,
+  nav,
+  .no-print,
+  #chat-widget,
+  #back-to-top,
+  button,
+  .btn,
+  .backdrop-blur,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+
+  /* Body and typography */
+  body {
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: #000;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  h1 {
+    font-size: 24pt;
+  }
+
+  h2 {
+    font-size: 20pt;
+  }
+
+  h3 {
+    font-size: 16pt;
+  }
+
+  /* Links */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  a[href^="/"]:after {
+    content: " (https://thefuture3d.com" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    page-break-inside: avoid;
+  }
+
+  /* Avoid breaking */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin-left: 1.5em;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 0.5em;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  /* Code blocks */
+  pre, code {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+
+  /* Remove backgrounds and gradients */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Show URLs for email and phone */
+  a[href^="mailto:"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  a[href^="tel:"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Print header/footer */
+  .print-header {
+    display: block;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .print-footer {
+    display: block;
+    border-top: 2px solid #000;
+    padding-top: 0.5em;
+    margin-top: 1em;
+    font-size: 10pt;
+    text-align: center;
+  }
+
+  /* Contact information */
+  .contact-info {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #ccc;
+  }
+
+  /* Service cards and sections */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 1em;
+  }
+
+  /* Remove animations and transitions */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
