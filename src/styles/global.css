@@ -84,13 +84,14 @@ html {
 }
 
 body {
-  @apply bg-white text-gray-900;
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Container improvements - ensure proper centering and max-width */
