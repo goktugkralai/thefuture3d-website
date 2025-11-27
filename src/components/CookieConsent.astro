@@ -1,0 +1,105 @@
+---
+// Cookie Consent Banner Component
+---
+
+<div
+  id="cookie-consent"
+  class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-2xl transform translate-y-full transition-transform duration-300"
+  role="dialog"
+  aria-labelledby="cookie-consent-title"
+  aria-modal="true"
+>
+  <div class="container mx-auto px-4 py-4 lg:py-6">
+    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+      <div class="flex-1">
+        <h3 id="cookie-consent-title" class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          Cookie Consent
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.{' '}
+          <a
+            href="/privacy"
+            class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+          >
+            Learn more
+          </a>
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+        <button
+          id="cookie-accept-all"
+          class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-300"
+        >
+          Accept All
+        </button>
+        <button
+          id="cookie-accept-necessary"
+          class="px-6 py-2.5 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-semibold rounded-lg transition-colors duration-300"
+        >
+          Necessary Only
+        </button>
+        <button
+          id="cookie-customize"
+          class="px-6 py-2.5 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold rounded-lg transition-colors duration-300"
+        >
+          Customize
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const consentBanner = document.getElementById('cookie-consent');
+    const acceptAll = document.getElementById('cookie-accept-all');
+    const acceptNecessary = document.getElementById('cookie-accept-necessary');
+    const customize = document.getElementById('cookie-customize');
+
+    // Check if user has already made a choice
+    const getCookieConsent = () => {
+      if (typeof localStorage !== 'undefined') {
+        return localStorage.getItem('cookie-consent');
+      }
+      return null;
+    };
+
+    // Show banner if no consent has been given
+    if (!getCookieConsent() && consentBanner) {
+      setTimeout(() => {
+        consentBanner.classList.remove('translate-y-full');
+      }, 1000); // Show after 1 second
+    }
+
+    // Save consent preference
+    const saveConsent = (preference: string) => {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('cookie-consent', preference);
+        localStorage.setItem('cookie-consent-date', new Date().toISOString());
+      }
+      if (consentBanner) {
+        consentBanner.classList.add('translate-y-full');
+      }
+    };
+
+    // Accept all cookies
+    acceptAll?.addEventListener('click', () => {
+      saveConsent('all');
+      // Here you would enable all cookies/analytics
+    });
+
+    // Accept only necessary cookies
+    acceptNecessary?.addEventListener('click', () => {
+      saveConsent('necessary');
+      // Here you would only enable necessary cookies
+    });
+
+    // Customize cookies (for future implementation)
+    customize?.addEventListener('click', () => {
+      // Open cookie preferences modal (to be implemented)
+      alert('Cookie customization panel coming soon!');
+    });
+  });
+</script>
+

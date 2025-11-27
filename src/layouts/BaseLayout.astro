@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import BackToTop from '../components/BackToTop.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { getBreadcrumbs } from '../utils/breadcrumbs';
 
 interface Props {
@@ -77,6 +78,7 @@ const breadcrumbItems = getBreadcrumbs(currentPath);
             <Footer />
             <ChatWidget />
             <BackToTop />
+            <CookieConsent />
           </body>
 </html>
 
