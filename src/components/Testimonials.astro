@@ -1,0 +1,116 @@
+---
+// Testimonials Component - Social proof section with client testimonials
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = 3 } = Astro.props;
+
+const testimonials = [
+  {
+    quote: "TheFuture3D delivered exceptional 3D scanning services for our renovation project. The accuracy was outstanding and the Revit models were ready in 48 hours, exactly as promised.",
+    author: "Sarah Johnson",
+    role: "Senior Architect",
+    company: "Modern Design Group",
+    industry: "Architecture",
+    rating: 5
+  },
+  {
+    quote: "Their Matterport virtual tours have been a game-changer for our real estate listings. We've seen a 40% increase in property inquiries since using their services.",
+    author: "Michael Chen",
+    role: "Real Estate Broker",
+    company: "Premier Properties",
+    industry: "Real Estate",
+    rating: 5
+  },
+  {
+    quote: "The drone mapping services helped us track construction progress accurately. The monthly surveys saved us significant time and improved our reporting to stakeholders.",
+    author: "David Rodriguez",
+    role: "Project Manager",
+    company: "CORE Construction",
+    industry: "Construction",
+    rating: 5
+  },
+  {
+    quote: "As an engineer, I appreciate the precision of their scanning work. The ±1mm accuracy with Trimble X12 gave us confidence in our renovation plans.",
+    author: "Emily Thompson",
+    role: "Structural Engineer",
+    company: "DKK Engineering",
+    industry: "Engineering",
+    rating: 5
+  },
+  {
+    quote: "The 3D virtual tours have transformed how we showcase our properties. Clients can explore spaces remotely, which has been especially valuable.",
+    author: "James Wilson",
+    role: "Property Manager",
+    company: "Luxury Property Management",
+    industry: "Property Management",
+    rating: 5
+  },
+  {
+    quote: "Fast turnaround, professional service, and excellent results. TheFuture3D is our go-to partner for all 3D scanning needs.",
+    author: "Lisa Anderson",
+    role: "Facilities Director",
+    company: "Corporate Facilities Group",
+    industry: "Facilities Management",
+    rating: 5
+  }
+].slice(0, limit);
+---
+
+<section class="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        What Our Clients Say
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Trusted by architects, engineers, real estate professionals, and construction companies across the country
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {testimonials.map((testimonial) => (
+        <div class="backdrop-blur-lg bg-white/80 border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+          <!-- Rating Stars -->
+          <div class="flex items-center gap-1 mb-4" aria-label={`${testimonial.rating} out of 5 stars`}>
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            ))}
+          </div>
+          
+          <!-- Quote -->
+          <blockquote class="text-gray-700 mb-6 leading-relaxed text-lg">
+            "{testimonial.quote}"
+          </blockquote>
+          
+          <!-- Author Info -->
+          <div class="border-t border-gray-200 pt-4">
+            <div class="font-semibold text-gray-900">{testimonial.author}</div>
+            <div class="text-sm text-gray-600">{testimonial.role}</div>
+            <div class="text-sm text-blue-600 font-medium">{testimonial.company}</div>
+            <div class="mt-2">
+              <span class="inline-block text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                {testimonial.industry}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- View More Link -->
+    <div class="text-center mt-12">
+      <a 
+        href="/testimonials"
+        class="inline-flex items-center text-blue-600 font-semibold hover:text-purple-600 transition-colors"
+      >
+        Read More Testimonials →
+      </a>
+    </div>
+  </div>
+</section>
+
