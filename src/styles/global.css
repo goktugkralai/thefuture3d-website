@@ -164,26 +164,54 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   @apply text-gray-900;
+  margin-bottom: 1rem; /* Add spacing below headings */
 }
 
 h1 {
   font-size: 3rem; /* 48px */
   font-weight: 800;
+  margin-bottom: 1.5rem; /* More space for h1 */
+  line-height: 1.1;
 }
 
 h2 {
   font-size: 2.25rem; /* 36px */
   font-weight: 700;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
 }
 
 h3 {
   font-size: 1.5rem; /* 24px */
   font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 h4 {
   font-size: 1.25rem; /* 20px */
   font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Improved paragraph spacing */
+p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7; /* More readable line height */
+}
+
+/* Section spacing improvements */
+section {
+  padding-top: 4rem; /* 64px */
+  padding-bottom: 4rem; /* 64px */
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding-top: 6rem; /* 96px on desktop */
+    padding-bottom: 6rem; /* 96px on desktop */
+  }
 }
 
 /* Links */
