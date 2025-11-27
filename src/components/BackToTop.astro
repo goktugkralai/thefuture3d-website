@@ -1,0 +1,86 @@
+---
+// Back to Top Button Component
+---
+
+<button
+  id="back-to-top"
+  class="fixed bottom-24 right-6 z-40 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 invisible flex items-center justify-center group"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg
+    class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (!backToTopButton) return;
+
+    // Show/hide button based on scroll position
+    function toggleButton() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    }
+
+    // Smooth scroll to top
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Listen for scroll events (throttled)
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          toggleButton();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial check
+    toggleButton();
+  });
+</script>
+
+<style>
+  #back-to-top {
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  }
+
+  #back-to-top:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Adjust position on mobile to avoid chat widget */
+  @media (max-width: 768px) {
+    #back-to-top {
+      bottom: 100px;
+      right: 1.5rem;
+    }
+  }
+</style>
+
