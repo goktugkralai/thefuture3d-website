@@ -1,0 +1,365 @@
+---
+// Live Chat Widget Component
+// Can be integrated with third-party services (Intercom, Drift, etc.) or used as contact form
+---
+
+<div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+  <!-- Chat Button -->
+  <button
+    id="chat-toggle"
+    class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+    aria-label="Open chat"
+    aria-expanded="false"
+    aria-controls="chat-window"
+  >
+    <svg
+      id="chat-icon"
+      class="w-6 h-6 transition-transform duration-300"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+      />
+    </svg>
+    <svg
+      id="close-icon"
+      class="w-6 h-6 hidden transition-transform duration-300"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+    <!-- Notification Badge -->
+    <span
+      id="chat-badge"
+      class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs font-bold hidden"
+    >
+      1
+    </span>
+  </button>
+
+  <!-- Chat Window -->
+  <div
+    id="chat-window"
+    class="hidden absolute bottom-20 right-0 w-80 md:w-96 h-[500px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col overflow-hidden"
+    role="dialog"
+    aria-labelledby="chat-title"
+    aria-modal="true"
+  >
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between">
+      <div>
+        <h3 id="chat-title" class="font-bold text-lg">Chat with Us</h3>
+        <p class="text-sm text-white/90">We typically reply in minutes</p>
+      </div>
+      <button
+        id="chat-minimize"
+        class="text-white hover:text-gray-200 transition-colors"
+        aria-label="Minimize chat"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20 12H4"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chat Messages Area -->
+    <div
+      id="chat-messages"
+      class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+    >
+      <!-- Welcome Message -->
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-sm font-bold">TF</span>
+        </div>
+        <div class="flex-1">
+          <div class="bg-white rounded-lg p-3 shadow-sm">
+            <p class="text-gray-800 text-sm">
+              Hi! 👋 Welcome to TheFuture3D. How can we help you today?
+            </p>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Just now</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-wrap gap-2">
+        <button
+          class="quick-action-btn px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          data-action="quote"
+        >
+          Get a Quote
+        </button>
+        <button
+          class="quick-action-btn px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          data-action="pricing"
+        >
+          Pricing Info
+        </button>
+        <button
+          class="quick-action-btn px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          data-action="schedule"
+        >
+          Schedule Demo
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <div class="border-t border-gray-200 p-4 bg-white">
+      <form id="chat-form" class="flex gap-2">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Type your message..."
+          class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          autocomplete="off"
+          aria-label="Chat message input"
+        />
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+          aria-label="Send message"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+            />
+          </svg>
+        </button>
+      </form>
+      <p class="text-xs text-gray-500 mt-2 text-center">
+        Or call us: <a href="tel:+13479981464" class="text-blue-600 hover:underline">(347) 998-1464</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatMinimize = document.getElementById('chat-minimize');
+    const chatIcon = document.getElementById('chat-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+
+    let isOpen = false;
+
+    // Toggle chat window
+    chatToggle?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        chatWindow?.classList.remove('hidden');
+        chatIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+        chatToggle?.setAttribute('aria-expanded', 'true');
+        chatInput?.focus();
+      } else {
+        chatWindow?.classList.add('hidden');
+        chatIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        chatToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Minimize chat
+    chatMinimize?.addEventListener('click', () => {
+      isOpen = false;
+      chatWindow?.classList.add('hidden');
+      chatIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      chatToggle?.setAttribute('aria-expanded', 'false');
+    });
+
+    // Quick action buttons
+    quickActionBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        let message = '';
+        let redirectUrl = '';
+
+        switch (action) {
+          case 'quote':
+            message = 'I would like to get a quote for 3D scanning services.';
+            redirectUrl = '/contact?source=chat&type=quote';
+            break;
+          case 'pricing':
+            message = 'I would like to know more about pricing.';
+            redirectUrl = '/contact?source=chat&type=pricing';
+            break;
+          case 'schedule':
+            message = 'I would like to schedule a demo.';
+            redirectUrl = '/contact?source=chat&type=demo';
+            break;
+        }
+
+        if (message) {
+          addUserMessage(message);
+          setTimeout(() => {
+            addBotResponse(
+              `Great! I'll help you with that. Let me redirect you to our contact form where you can provide more details.`
+            );
+            setTimeout(() => {
+              window.location.href = redirectUrl;
+            }, 1500);
+          }, 500);
+        }
+      });
+    });
+
+    // Handle form submission
+    chatForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = chatInput?.value.trim();
+      if (message) {
+        addUserMessage(message);
+        chatInput!.value = '';
+
+        // Simulate bot response (replace with actual chat service integration)
+        setTimeout(() => {
+          addBotResponse(
+            `Thanks for your message! For immediate assistance, please call us at (347) 998-1464 or fill out our contact form at /contact. Our team will get back to you within 24 hours.`
+          );
+        }, 1000);
+      }
+    });
+
+    // Add user message
+    function addUserMessage(text) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'flex items-start gap-3 justify-end';
+      messageDiv.innerHTML = `
+        <div class="flex-1 flex flex-col items-end">
+          <div class="bg-blue-600 text-white rounded-lg p-3 shadow-sm max-w-[80%]">
+            <p class="text-sm">${escapeHtml(text)}</p>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Just now</p>
+        </div>
+        <div class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-sm font-bold">You</span>
+        </div>
+      `;
+      chatMessages?.appendChild(messageDiv);
+      chatMessages?.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Add bot response
+    function addBotResponse(text) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'flex items-start gap-3';
+      messageDiv.innerHTML = `
+        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-sm font-bold">TF</span>
+        </div>
+        <div class="flex-1">
+          <div class="bg-white rounded-lg p-3 shadow-sm">
+            <p class="text-gray-800 text-sm">${escapeHtml(text)}</p>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Just now</p>
+        </div>
+      `;
+      chatMessages?.appendChild(messageDiv);
+      chatMessages?.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Close chat when clicking outside (optional)
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (
+        isOpen &&
+        !chatWindow?.contains(target) &&
+        !chatToggle?.contains(target) &&
+        target.closest('#chat-widget') === null
+      ) {
+        // Uncomment to enable click-outside-to-close
+        // isOpen = false;
+        // chatWindow?.classList.add('hidden');
+        // chatIcon?.classList.remove('hidden');
+        // closeIcon?.classList.add('hidden');
+        // chatToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>
+
+<style>
+  #chat-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  #chat-messages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+
+  #chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Animation for chat window */
+  #chat-window {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pulse animation for chat button */
+  #chat-toggle {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+  }
+</style>
+
