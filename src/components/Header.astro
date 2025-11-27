@@ -1,5 +1,6 @@
 ---
 // Header Component with Navigation
+import Search from './Search.astro';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 border-b border-gray-200/20 shadow-lg">
@@ -61,6 +62,17 @@
 
       <!-- CTA Button (Desktop) -->
       <div class="hidden lg:flex items-center space-x-4">
+        <!-- Search Icon -->
+        <button 
+          onclick="window.openSearch?.()"
+          class="text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 hover:scale-110"
+          aria-label="Search"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+        
         <a href="/contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
           Get Quote
         </a>
@@ -124,6 +136,20 @@
         <a href="/locations" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black rounded-lg transition">Locations</a>
         <a href="/technology" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black rounded-lg transition">Technology</a>
         <a href="/contact" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black rounded-lg transition">Contact</a>
+        
+        <!-- Mobile Search -->
+        <div class="px-4">
+          <button 
+            onclick="window.openSearch?.()"
+            class="w-full flex items-center justify-center gap-2 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black rounded-lg transition"
+            aria-label="Search"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <span>Search</span>
+          </button>
+        </div>
         
         <!-- Mobile CTA -->
         <div class="px-4 pt-2">
@@ -192,4 +218,7 @@
     }
   });
 </script>
+
+<!-- Include Search component -->
+<Search />
 

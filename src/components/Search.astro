@@ -1,0 +1,181 @@
+---
+// Search Component - Site-wide search functionality
+---
+
+<div id="search-overlay" class="fixed inset-0 z-[100] hidden backdrop-blur-xl bg-black/50 transition-opacity duration-300">
+  <div class="absolute inset-0" id="search-overlay-backdrop"></div>
+  <div class="relative max-w-2xl mx-auto mt-20 px-4">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Search Input -->
+      <div class="p-4 border-b border-gray-200">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search services, locations, industries..."
+            class="flex-1 outline-none text-lg"
+            autocomplete="off"
+            aria-label="Search"
+          />
+          <button id="search-close" class="text-gray-400 hover:text-gray-600 transition-colors" aria-label="Close search">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Search Results -->
+      <div id="search-results" class="max-h-[400px] overflow-y-auto">
+        <!-- Results will be populated by JavaScript -->
+        <div class="p-8 text-center text-gray-500">
+          <p>Type to search...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Search index data (will be loaded from search-index.ts)
+  const searchIndex = [
+    { title: "3D Laser Scanning", url: "/3d-scan-to-bim", category: "Service", description: "Capture precise as-built conditions with Trimble X12..." },
+    { title: "Matterport Virtual Tours", url: "/3d-virtual-tour", category: "Service", description: "Immersive 3D walkthroughs for real estate..." },
+    { title: "Drone Services", url: "/drone", category: "Service", description: "High-precision aerial mapping with DJI Matrice 400 RTK..." },
+    { title: "Google Street View", url: "/google-street-view", category: "Service", description: "Professional Google Street View photography..." },
+    { title: "Scan to BIM", url: "/3d-scan-to-bim", category: "Service", description: "Convert 3D laser scans to Revit-ready BIM models..." },
+    { title: "Architecture", url: "/industries/architecture", category: "Industry", description: "3D scanning and BIM services for architecture firms..." },
+    { title: "Construction", url: "/industries/construction", category: "Industry", description: "Construction progress tracking and site documentation..." },
+    { title: "Real Estate", url: "/industries/real-estate", category: "Industry", description: "Matterport virtual tours and property documentation..." },
+    { title: "Engineering", url: "/industries/engineering", category: "Industry", description: "Engineering-grade 3D scanning and BIM services..." },
+    { title: "Insurance", url: "/industries/insurance", category: "Industry", description: "Property documentation for insurance claims..." },
+    { title: "Property Management", url: "/industries/property-management", category: "Industry", description: "Facility documentation and virtual property tours..." },
+    { title: "Hospitality", url: "/industries/hospitality", category: "Industry", description: "Virtual hotel tours and venue documentation..." },
+    { title: "Retail", url: "/industries/retail", category: "Industry", description: "Retail space documentation and virtual shopping..." },
+    { title: "Manufacturing", url: "/industries/manufacturing", category: "Industry", description: "Industrial facility scanning and plant documentation..." },
+    { title: "Education", url: "/industries/education", category: "Industry", description: "Campus documentation and virtual campus tours..." },
+    { title: "Miami", url: "/locations/florida/miami", category: "Location", description: "3D scanning and drone services in Miami, Florida..." },
+    { title: "New York", url: "/locations/new-york", category: "Location", description: "3D scanning and Matterport services in New York..." },
+    { title: "Los Angeles", url: "/locations/california/los-angeles", category: "Location", description: "Professional 3D scanning in Los Angeles..." },
+    { title: "Florida", url: "/locations/florida", category: "Location", description: "Statewide 3D scanning services across Florida..." },
+    { title: "California", url: "/locations/california", category: "Location", description: "3D scanning services throughout California..." },
+    { title: "Trimble X12 vs Leica BLK360", url: "/comparisons/trimble-x12-vs-leica-blk360", category: "Comparison", description: "Compare Trimble X12 and Leica BLK360 scanners..." },
+    { title: "Matterport Pro 3 vs Pro 2", url: "/comparisons/matterport-pro-3-vs-pro-2", category: "Comparison", description: "Compare Matterport Pro 3 and Pro 2 cameras..." },
+    { title: "LiDAR vs Photogrammetry", url: "/comparisons/lidar-vs-photogrammetry", category: "Comparison", description: "Compare LiDAR and photogrammetry technologies..." },
+    { title: "Services", url: "/services", category: "Page", description: "Complete list of all services offered." },
+    { title: "Technology", url: "/technology", category: "Page", description: "Latest 2025 equipment and technology." },
+    { title: "Pricing", url: "/pricing", category: "Page", description: "Transparent pricing for all services." },
+    { title: "Contact", url: "/contact", category: "Page", description: "Get in touch for a free consultation." },
+    { title: "Locations", url: "/locations", category: "Page", description: "Find services in your area." }
+  ];
+
+  // Get DOM elements
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const searchResults = document.getElementById('search-results');
+  const searchClose = document.getElementById('search-close');
+  const searchBackdrop = document.getElementById('search-overlay-backdrop');
+
+  // Open search
+  function openSearch() {
+    if (searchOverlay) {
+      searchOverlay.classList.remove('hidden');
+      searchInput?.focus();
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Close search
+  function closeSearch() {
+    if (searchOverlay) {
+      searchOverlay.classList.add('hidden');
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      if (searchResults) {
+        searchResults.innerHTML = '<div class="p-8 text-center text-gray-500"><p>Type to search...</p></div>';
+      }
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Search function
+  function performSearch(query: string) {
+    if (!searchResults) return;
+    
+    if (!query.trim()) {
+      searchResults.innerHTML = '<div class="p-8 text-center text-gray-500"><p>Type to search...</p></div>';
+      return;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    const results = searchIndex.filter(item => 
+      item.title.toLowerCase().includes(lowerQuery) ||
+      item.description.toLowerCase().includes(lowerQuery) ||
+      item.category.toLowerCase().includes(lowerQuery) ||
+      item.url.toLowerCase().includes(lowerQuery)
+    );
+
+    if (results.length === 0) {
+      searchResults.innerHTML = `
+        <div class="p-8 text-center">
+          <p class="text-gray-500 mb-2">No results found for "${query}"</p>
+          <p class="text-sm text-gray-400">Try searching for services, locations, or industries</p>
+        </div>
+      `;
+      return;
+    }
+
+    searchResults.innerHTML = results.map(item => `
+      <a href="${item.url}" class="block p-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">${item.category}</span>
+              <h3 class="font-semibold text-gray-900">${item.title}</h3>
+            </div>
+            <p class="text-sm text-gray-600 line-clamp-2">${item.description}</p>
+          </div>
+          <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  // Event listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      performSearch((e.target as HTMLInputElement).value);
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener('click', closeSearch);
+  }
+
+  if (searchBackdrop) {
+    searchBackdrop.addEventListener('click', closeSearch);
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    // Cmd/Ctrl + K to open search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+    // Escape to close
+    if (e.key === 'Escape' && searchOverlay && !searchOverlay.classList.contains('hidden')) {
+      closeSearch();
+    }
+  });
+
+  // Export for use in Header component
+  (window as any).openSearch = openSearch;
+</script>
+
