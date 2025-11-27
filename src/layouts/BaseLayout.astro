@@ -79,6 +79,56 @@ const breadcrumbItems = getBreadcrumbs(currentPath);
             <ChatWidget />
             <BackToTop />
             <CookieConsent />
+            <script is:inline>
+              // Keyboard Shortcuts
+              (function() {
+                document.addEventListener('keydown', function(e) {
+                  // Cmd/Ctrl + K: Open search
+                  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    if (window.openSearch) window.openSearch();
+                  }
+                  
+                  // Cmd/Ctrl + /: Show keyboard shortcuts help
+                  if ((e.metaKey || e.ctrlKey) && e.key === '/') {
+                    e.preventDefault();
+                    alert('Keyboard Shortcuts:\n\n⌘K - Open Search\n⌘/ - Show Help\nAlt+H - Homepage\nAlt+C - Contact\nAlt+S - Services\nEsc - Close Modals');
+                  }
+                  
+                  // Escape: Close modals
+                  if (e.key === 'Escape') {
+                    const searchOverlay = document.getElementById('search-overlay');
+                    if (searchOverlay && !searchOverlay.classList.contains('hidden')) {
+                      const closeBtn = document.getElementById('search-close');
+                      if (closeBtn) closeBtn.click();
+                    }
+                    const chatWindow = document.getElementById('chat-window');
+                    if (chatWindow && !chatWindow.classList.contains('hidden')) {
+                      const chatToggle = document.getElementById('chat-toggle');
+                      if (chatToggle) chatToggle.click();
+                    }
+                  }
+                  
+                  // Alt + H: Homepage
+                  if (e.altKey && e.key === 'h') {
+                    e.preventDefault();
+                    window.location.href = '/';
+                  }
+                  
+                  // Alt + C: Contact
+                  if (e.altKey && e.key === 'c') {
+                    e.preventDefault();
+                    window.location.href = '/contact';
+                  }
+                  
+                  // Alt + S: Services
+                  if (e.altKey && e.key === 's') {
+                    e.preventDefault();
+                    window.location.href = '/services';
+                  }
+                });
+              })();
+            </script>
           </body>
 </html>
 
