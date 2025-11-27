@@ -50,6 +50,9 @@ const breadcrumbItems = getBreadcrumbs(currentPath);
     <!-- Canonical -->
     <link rel="canonical" href={Astro.url} />
     
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+    
     <!-- Organization Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
