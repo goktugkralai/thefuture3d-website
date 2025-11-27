@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ClientLogos from '../components/ClientLogos.astro';
+import CaseStudies from '../components/CaseStudies.astro';
 ---
 
 <BaseLayout
@@ -74,6 +76,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="absolute top-20 right-1/4 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
   </section>
 
+    <!-- Client Logos Section -->
+    <ClientLogos />
+
     <!-- Services Overview -->
     <section class="py-16 lg:py-24 bg-gray-50">
       <div class="container mx-auto px-4">
@@ -147,6 +152,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
     </section>
+
+    <!-- Case Studies Section -->
+    <CaseStudies limit={3} />
 
     <!-- Technology Section -->
     <section class="py-16 lg:py-24 bg-white">
