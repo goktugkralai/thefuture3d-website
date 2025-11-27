@@ -55,8 +55,12 @@ const siteTitle = title ? `${title} | THE FUTURE 3D` : 'THE FUTURE 3D - Professi
     })} />
   </head>
           <body class="min-h-screen bg-white antialiased pt-16 lg:pt-20">
+            <!-- Skip to main content link for accessibility -->
+            <a href="#main-content" class="skip-to-main">Skip to main content</a>
             <Header />
-            <slot />
+            <main id="main-content" tabindex="-1">
+              <slot />
+            </main>
             <Footer />
           </body>
 </html>

@@ -7,7 +7,7 @@ import Search from './Search.astro';
   <nav class="container mx-auto px-4 lg:px-6">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-3 group">
+      <a href="/" class="flex items-center space-x-3 group" aria-label="THE FUTURE 3D - Home">
         <div class="text-2xl lg:text-3xl font-bold gradient-text">
           THE FUTURE 3D
         </div>
@@ -19,38 +19,56 @@ import Search from './Search.astro';
         
         <!-- Services Dropdown -->
         <div class="relative group">
-          <button class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center">
+          <button 
+            class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center"
+            aria-label="Services menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
             Services
-            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div 
+            class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            role="menu"
+            aria-label="Services submenu"
+          >
             <div class="py-2">
-              <a href="/drone" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Drone Services</a>
-              <a href="/3d-scan-to-bim" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">3D Scanning</a>
-              <a href="/3d-virtual-tour" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Matterport Tours</a>
-              <a href="/google-street-view" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Street View</a>
-              <a href="/services" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition border-t border-gray-200 mt-1">All Services</a>
+              <a href="/drone" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Drone Services</a>
+              <a href="/3d-scan-to-bim" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">3D Scanning</a>
+              <a href="/3d-virtual-tour" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Matterport Tours</a>
+              <a href="/google-street-view" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Street View</a>
+              <a href="/services" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition border-t border-gray-200 mt-1 focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">All Services</a>
             </div>
           </div>
         </div>
 
         <!-- Industries Dropdown -->
         <div class="relative group">
-          <button class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center">
+          <button 
+            class="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center"
+            aria-label="Industries menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
             Industries
-            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div 
+            class="absolute left-0 mt-2 w-56 backdrop-blur-lg bg-white/95 border border-white/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            role="menu"
+            aria-label="Industries submenu"
+          >
             <div class="py-2">
-              <a href="/industries/real-estate" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Real Estate</a>
-              <a href="/industries/architecture" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Architecture</a>
-              <a href="/industries/construction" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Construction</a>
-              <a href="/industries/engineering" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition">Engineering</a>
-              <a href="/industries" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition border-t border-gray-200 mt-1">All Industries</a>
+              <a href="/industries/real-estate" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Real Estate</a>
+              <a href="/industries/architecture" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Architecture</a>
+              <a href="/industries/construction" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Construction</a>
+              <a href="/industries/engineering" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">Engineering</a>
+              <a href="/industries" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-black transition border-t border-gray-200 mt-1 focus:bg-gray-50 focus:outline-2 focus:outline-blue-500" role="menuitem">All Industries</a>
             </div>
           </div>
         </div>
@@ -86,7 +104,11 @@ import Search from './Search.astro';
           </svg>
         </button>
         
-        <a href="/contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+        <a 
+          href="/contact" 
+          class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2"
+          aria-label="Get a free quote"
+        >
           Get Quote
         </a>
       </div>
