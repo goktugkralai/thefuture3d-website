@@ -1,0 +1,112 @@
+---
+// Related Content Component - Shows related pages/content
+interface Props {
+  currentPage?: string;
+  category?: string;
+  limit?: number;
+}
+
+const { currentPage = '', category = '', limit = 4 } = Astro.props;
+
+// Sample related content - in production, this would be generated from actual content
+const relatedContent = [
+  {
+    title: '3D Scan to BIM Services',
+    url: '/3d-scan-to-bim',
+    description: 'Convert point cloud data into intelligent BIM models',
+    category: 'Services',
+  },
+  {
+    title: 'Commercial Drone Services',
+    url: '/drone',
+    description: 'Aerial mapping and inspection with professional drones',
+    category: 'Services',
+  },
+  {
+    title: 'Matterport Virtual Tours',
+    url: '/3d-virtual-tour',
+    description: 'Immersive 3D virtual tours for real estate and properties',
+    category: 'Services',
+  },
+  {
+    title: 'Construction Industry Solutions',
+    url: '/industries/construction',
+    description: '3D scanning and BIM services for construction projects',
+    category: 'Industries',
+  },
+  {
+    title: 'Real Estate Services',
+    url: '/industries/real-estate',
+    description: 'Virtual tours and property documentation services',
+    category: 'Industries',
+  },
+  {
+    title: 'Miami 3D Scanning Services',
+    url: '/locations/florida/miami',
+    description: 'Professional 3D scanning services in Miami, Florida',
+    category: 'Locations',
+  },
+];
+
+// Filter related content (exclude current page, prioritize same category)
+let filtered = relatedContent.filter(item => item.url !== currentPage);
+if (category) {
+  const sameCategory = filtered.filter(item => item.category === category);
+  const otherCategory = filtered.filter(item => item.category !== category);
+  filtered = [...sameCategory, ...otherCategory];
+}
+const displayed = filtered.slice(0, limit);
+---
+
+{displayed.length > 0 && (
+  <section class="py-12 lg:py-16 bg-gray-50 border-t border-gray-200">
+    <div class="container mx-auto px-4">
+      <div class="mb-8">
+        <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+          Related Content
+        </h2>
+        <p class="text-gray-600">
+          Explore more services and resources
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {displayed.map((item) => (
+          <a
+            href={item.url}
+            class="group bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <div class="mb-3">
+              <span class="inline-block text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                {item.category}
+              </span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+              {item.title}
+            </h3>
+            <p class="text-sm text-gray-600 line-clamp-2">
+              {item.description}
+            </p>
+            <div class="mt-4 flex items-center text-blue-600 font-medium text-sm group-hover:gap-2 transition-all">
+              Learn more
+              <svg
+                class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
